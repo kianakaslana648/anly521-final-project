@@ -21,18 +21,19 @@ def canny_detect(imgs: List[PIL.Image.Image], low_thres=100, high_thres=200):
 
 ### openpose
 def openpose_detect(imgs: List[PIL.Image.Image]):
-  return [shared_items.detector(img) for img in imgs]
+  return [share.shared_items.detector(img) for img in imgs]
 
 ### depth
 def depth_detect(imgs: List[PIL.Image.Image]):
-  return [shared_items.detector(img) for img in imgs]
+  return [share.shared_items.detector(img) for img in imgs]
 
 ### seg
 def seg_detect(imgs: List[PIL.Image.Image]):
-  mask_generator = SamAutomaticMaskGenerator(shared_items.detector)
+  mask_generator = SamAutomaticMaskGenerator(share.shared_items.detector)
   mask_annotator = sv.MaskAnnotator()
   seg_imgs = []
   for image in imgs:
+    image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     masks = mask_generator.generate(image)
     detections = sv.Detections.from_sam(masks)
     annotated_image = mask_annotator.annotate(image, detections)
@@ -41,10 +42,12 @@ def seg_detect(imgs: List[PIL.Image.Image]):
 
 ### lineart
 def lineart_detect(imgs: List[PIL.Image.Image]):
-  return [shared_items.detector(img) for img in imgs]
+  return [share.shared_items.detector(img) for img in imgs]
 
 ### scribble
 def scribble_detect(imgs: List[PIL.Image.Image]):
-  return [shared_items.detector(img, scribble=True) for img in imgs]
+  return [share.shared_items.detector(img, scribble=True) for img in imgs]
 
-
+### lineartanime
+def lineartanime_detect(imgs: List[PIL.Image.Image]):
+  return [share.shared_items.detector(img) for img in imgs]
