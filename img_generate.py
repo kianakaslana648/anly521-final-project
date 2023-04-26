@@ -23,5 +23,4 @@ def generate_img(par: params):
   else:
     return share.shared_items.sd_pipeline(prompt=par.prompt, 
     negative_prompt=par.neg_prompt, num_inference_steps=par.num_steps,
-    height=par.height, width=par.width, guidance_scale=par.cfg_scale,
-    num_images_per_prompt=par.num_imgs, image=par.refer_image).images
+    guidance_scale=par.cfg_scale, num_images_per_prompt=par.num_imgs, image=par.refer_image).images
