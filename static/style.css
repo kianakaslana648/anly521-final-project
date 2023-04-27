@@ -76,3 +76,122 @@ div.show{
     display: block;
     margin: 20px;
 }
+
+
+/* ############################# */
+
+.tablinks {
+    font-family: American Typewriter, serif;
+    font-size: 35px;
+}
+
+.titleimage {
+    width: 100px;
+    height: auto;
+}
+
+
+h1 {
+    color: #F7F5F0;
+    background-color: #00214B;
+    vertical-align: middle;
+    display:inline;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 60px;
+    font-weight: normal;
+}
+
+h3 {
+    color: #00214B;
+    vertical-align: middle;
+    display: inline;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 20px;
+    }
+
+#project_title {
+    background-color: #00214B;
+
+}
+
+
+#introductiontext {
+font-family: Palatino, URW Palladio L, serif;
+font-size: 25px;
+vertical-align: middle;
+}
+
+
+#groupinformation {
+font-family: Marker Felt, fantasy;
+text-align: right;
+font-size: 40px;
+}
+
+#prompt-img {
+border-radius: 25px;
+border: 2px solid #00214B;
+padding: 20px; 
+width: 400px;
+height: 300px;
+}
+
+#neg-prompt-img {
+border-radius: 25px;
+border: 2px solid #00214B;
+padding: 20px; 
+width: 400px;
+height: 300px;
+}
+
+#gpt-prompt-img {
+    border-radius: 25px;
+    border: 2px solid #00214B;
+    padding: 20px; 
+    width: 400px;
+    height: 300px;
+    }
+
+    
+#gpt-prompt-returned {
+border-radius: 25px;
+border: 2px solid #00214B;
+padding: 20px; 
+width: 400px;
+height: 300px;
+}
+
+#returned-captions {
+    border-radius: 25px;
+    border: 2px solid #00214B;
+    padding: 20px; 
+    width: 400px;
+    height: 300px;
+
+}
+
+#post-prompt {
+border-radius: 25px;
+border: 2px solid #00214B;
+padding: 20px; 
+width: 400px;
+height: 300px;
+}
+
+
+#post-text {
+border-radius: 25px;
+border: 2px solid #00214B;
+padding: 20px; 
+width: 400px;
+height: 300px;
+}
+
+.image_pic {
+float: right;
+width: 300px;
+height: auto;
+}
+
+
+
