@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Social Media AI-Assistance</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+  <!-- Favicons -->
+
+  <!-- Custom styles for this template -->
+  <link href="styles.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="container" style="max-width: 800px">
+
+    <h2 style='text-align: center; font-family: "Lucida Handwriting", "Brush Script MT", cursive;'>Social Media AI-Assistance</h2>
+    <br>
+    <p style='font-size: 20px; text-align: right; font-family: "Times New Roman", Times, serif;'>
+      Final Project of ANLY521 <br>
+      Computational Linguistics <br>
+      at Georgetown University</p>
+    
+    <hr style=" border-top: 8px solid #bbb; border-radius: 5px;">
+    Authors: Minglei Cai, Zezhen Liu, Jamie Zhang, Shihong Zhou
+    <hr style=" border-top: 8px solid #bbb; border-radius: 5px;">
+   
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Project Goals</strong>
+    </h4>
+    <p>
+      Social media has become an important part of campus life at Georgetown University, 
+      which not only connects the school with students, faculty, and alumni but promotes 
+      campus events, programs, and initiatives. These social media accounts, 
+      ranging from offices to student organizations, often post festival information, 
+      announcements, and updates. However, managing these accounts can be challenging. 
+      The content needs to be both informative and fun while keeping up with the high 
+      volume of daily posts. Sometimes topics can often be similar, but it still requires creativity to keep the audience engaged.
+    </p>
+    <p>
+      While different kinds of deep-learning-based generative models emerge, 
+      we aim at incorporating generative models in domains of NLP (Natural Language Processing) 
+      and CV (Computer Vision) to help with content composition of social media posts.
+    </p>
+    <hr>
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>AI-Tool Introduction</strong>
+    </h4>
+    <br>
+    <p><strong>ChatGPT</strong></p>
+    <p>
+      <ul>
+        <li>
+          One of the most state-of-the-art text-generation models.
+        </li>
+        <li>
+          We use GPT-3.5-turbo as our text content generator, hashtag summarizer and stable diffusion prompt helper.
+        </li>
+      </ul>
+    </p>
+    <p><strong>Stable Diffusion</strong></p>
+    <p>
+      <ul>
+        <li>
+          A series of prompt-based image-generation models.
+        </li>
+        <li>
+          Could be composed with extra modules of different ControlNets.
+        </li>
+        <li>
+          We compose stable diffusion pipelines using Huggingface APIs 
+          (pipelines with controlnet or without controlnets) and use these sd pipelines as our image generator.
+        </li>
+        <li>
+          We download our stable diffusion models from the open-source website 
+          <a href="https://civitai.com/">civitai</a>
+        </li>
+        <li>
+          We download our controlnets and corresponding annotators from 
+          <a href="https://huggingface.co/lllyasviel/ControlNet">huggingface.co/lllyasviel/ControlNet</a>
+        </li>
+      </ul>
+    </p>
+    <hr>
+
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Usage</strong>
+    </h4>
+    <ul>
+      <li>
+        Upload <strong>521_project.ipynb</strong>
+      </li>
+      <li>
+        Download .safetensors .ckpt models from <a href="https://civitai.com/">civitai</a>.
+      </li>
+      <li>
+        Download controlnet models from <a href="https://huggingface.co/lllyasviel/ControlNet">huggingface.co/lllyasviel/ControlNet</a>
+      </li>
+      <li>
+        Transform safetensors/ckpt models into Huggingface Diffusers (Tutorial notebook <strong>sd_transform_test.ipynb</strong>); save diffusers and controlnets
+      </li>
+      <li>
+        Configure your stable diffusion model path and controlnet path in load.py
+      </li>
+      <li>
+        Configure your OpenAI API in main.py
+      </li>
+      <li>
+        Run <strong>521_project.ipynb</strong> in Google Colab Pro
+      </li>
+      <li>
+        Go to the address given by
+        <br>
+        <code>
+          from google.colab.output import eval_js
+          print(eval_js("google.colab.kernel.proxyPort(8000)"))
+        </code>
+        <br>
+          (which is the address of FastAPI backend)
+        <br>
+        <code>
+          + '/static/index.html'
+        </code>
+        <br>
+          (which is a local frontend) <br>
+          Then you are at the front webpage.
+      </li>
+      <li>
+        You can first go to the <strong>Image Generation</strong> part to generate images.
+        <div class="row py-5">
+    
+          <div class="col-md-12">
+            <div class="card p-0" style="border: none">
+              <img src="report_imgs/sd_ui_screenshot.jpg" style="margin:auto;" alt="..." width="500">
+              <div class="card-body">
+                <p style="font-weight: lighter; text-align: center;">Screenshot of SD Part</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        When you have your image, you can go to the <strong>share</strong> page and 
+        call for ChatGPT help for text-generation and hashtag-summarization; then you
+        can share the image and text on other apps installed on your local device and supported by your local system.
+        <div class="row py-5">
+    
+          <div class="col-md-12">
+            <div class="card p-0" style="border: none">
+              <img src="report_imgs/share_ui.jpg" style="margin:auto;" alt="..." width="500">
+              <div class="card-body">
+                <p style="font-weight: lighter; text-align: center;">Screenshot of Share Part</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr>
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Tutorial for StableDiffusionControlNet Models</strong>
+    </h4>
+        <br>
+           <p>
+              <strong>ControlNet</strong>
+          </p>
+          <p>
+            <ul>
+              <li>
+                While the generated images of original stable diffusion models are primarily controlled by prompts,
+                you may prefer a certain composition for the image, and not struggling so much with prompt engineering.
+              </li>
+              <li>
+                Then ControlNet models are good choices. ControlNet models are extra control modules for stable diffusion
+                models. They add extra conditions to the SD models, such as a depth image, a sketch or a segmantation map, etc.
+                Depending on your goals, they can be trained with different conditions.
+              </li>
+              <li>
+                An advantage of ControlNet is that they can be trained with limited resources; 
+                and once trained, can be composed with any SD models.
+              </li>
+              <li>
+                Huggingface has provided controlnet-sd-pipeline composition APIs & corresponding preprocessors. Thus,
+                it's easy and safe to use.
+              </li>
+              <li>
+                If you get lost about how to provide the extra condition such as a depth image, don't worry, there are
+                corresponding preprocessors for you to generate these conditions from other images.
+              </li>
+              <li>
+                That means once you get interested in some picture, preprocess them in a certain way, and then you can load the
+                corresponding controlnet with the SD model you're fond of. Finally you can generate the images with the 
+                compositions that you want.
+              </li>
+              <li>
+                In conclusion, StableDiffusionControlNet Models are powerful art-assistant tools and already in use by some 
+                artists.
+              </li>
+            </ul>
+          <br>
+            <p>
+               <strong>Examples</strong>
+               <p>We scrape images (primarily photos) from the Instagram & Twitter Account of our Georgetown University, and
+                generate the following samples:
+               </p>
+            </p>
+            <div style="display:block; margin:auto;">
+              <div style="display:block; margin:auto;">
+                  <img src="report_imgs/example_imgs/2.jpg" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/canny_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+              </div>
+              <div style="display:block; margin:auto;">
+                <img src="report_imgs/generated_imgs/1_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                <img src="report_imgs/generated_imgs/1_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                
+              </div>
+              <div class="card-body">
+                <p style="font-weight: lighter; text-align: center;">
+                  realisticVision-cannyControlnet
+                  <br>
+                  Prompt: 'A beautiful house at dawn'</p>
+              </div>
+            </div>
+            <div style="display:block; margin:auto;">
+              <div style="display:block; margin:auto;">
+                  <img src="report_imgs/example_imgs/3.jpg" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/canny_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+              </div>
+              <div style="display:block; margin:auto;">
+                <img src="report_imgs/generated_imgs/2_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                <img src="report_imgs/generated_imgs/2_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                
+              </div>
+              <div class="card-body">
+                <p style="font-weight: lighter; text-align: center;">
+                  realisticVision-cannyControlnet
+                  <br>
+                  Prompt: 'A beautiful house at dawn'</p>
+              </div>
+              <div style="display:block; margin:auto;">
+                <div style="display:block; margin:auto;">
+                    <img src="report_imgs/example_imgs/5.jpg" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/canny_3.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div style="display:block; margin:auto;">
+                  <img src="report_imgs/generated_imgs/3_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/3_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;">
+                    realisticVision-cannyControlnet
+                    <br>
+                    Prompt: 'A castle'</p>
+                </div>
+              </div>
+              <div style="display:block; margin:auto;">
+                <div style="display:block; margin:auto;">
+                    <img src="report_imgs/example_imgs/6.jpg" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/canny_4.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div style="display:block; margin:auto;">
+                  <img src="report_imgs/generated_imgs/4_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/4_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;">
+                    anythingelseV4_v45-cannyControlnet
+                    <br>
+                    Prompt: 'A Chinese Palace'</p>
+                </div>
+              </div>
+              <div style="display:block; margin:auto;">
+                <div style="display:block; margin:auto;">
+                    <img src="report_imgs/example_imgs/7.jpg" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/canny_5.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div style="display:block; margin:auto;">
+                  <img src="report_imgs/generated_imgs/5_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/5_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;">
+                    pastelMixStylizedAnime-cannyControlnet
+                    <br>
+                    Prompt: 'A medieval castle in the window'</p>
+                </div>
+              </div>
+              <div style="display:block; margin:auto;">
+                <div style="display:block; margin:auto;">
+                    <img src="report_imgs/example_imgs/jack.jpg" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/depth_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div style="display:block; margin:auto;">
+                  <img src="report_imgs/generated_imgs/6_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/6_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;">
+                    deliberate_v2-depthControlnet
+                    <br>
+                    Prompt: 'bulldog, super hero, cyberpunk'</p>
+                </div>
+              </div>
+            </div>
+            <p>
+              <strong>More Examples:</strong>
+              <p>Also, you could use it to generate images not related to any social media:
+              </p>
+              <div style="display:block; margin:auto;">
+                <div style="display:block; margin:auto;">
+                    <img src="report_imgs/example_imgs/input_image_vermeer.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/depth_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div style="display:block; margin:auto;">
+                  <img src="report_imgs/generated_imgs/7_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/7_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;">
+                    pastelMixStylizedAnime-depthControlnet
+                    <br>
+                    Prompt: 'a cute girl'</p>
+                </div>
+              </div>
+              <p>Or for artistic avatars from original photos (Photo of one of us authors):</p>
+              <div style="display:block; margin:auto;">
+                <div style="display:block; margin:auto;">
+                    <img src="report_imgs/generated_imgs/8_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/8_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                </div>
+                <div style="display:block; margin:auto;">
+                  <img src="report_imgs/generated_imgs/8_3.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  <img src="report_imgs/generated_imgs/8_4.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  
+                </div>
+                <div class="card-body">
+                  <p style="font-weight: lighter; text-align: center;">
+                    pastelMixStylizedAnime-depthControlnet
+                    <br>
+                    Prompt: 'a cute girl'/'a cute boy'</p>
+                </div>
+                <p>Or from simple scribbles completed by default <strong>Paint</strong> app:</p>
+                <div style="display:block; margin:auto;">
+                  <div style="display:block; margin:auto;">
+                      <img src="report_imgs/generated_imgs/scribble_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                      <img src="report_imgs/generated_imgs/9_1.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                  </div>
+                  <div style="display:block; margin:auto;">
+                    <img src="report_imgs/generated_imgs/9_2.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                    <img src="report_imgs/generated_imgs/9_3.png" style="display: inline; margin: 0px;" alt="..." width="300">
+                    
+                  </div>
+                  <div class="card-body">
+                    <p style="font-weight: lighter; text-align: center;">
+                      deliberate_v2-scribbleControlnet
+                      <br>
+                      Prompt: 'a house with farm, cyberpunk'</p>
+                  </div>
+              </div>
+           </p>
+            
+    <br>
+    <hr>
+ 
+
+    
+    
+
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Conclusions</strong>
+    </h4>
+    <br>
+    <p>
+      Above is all about our ANLY-521 final project regarding using ChatGPT
+      and StableDiffusionControlNet models to help with socia media content generation.
+    </p>
+    <p>
+      While AI has been growing so rapidly these years, it will surely make a huge impact on
+      every aspect of our lives, which means socia media and even some art fields are all likely to be included.
+    </p>
+    <p>
+      We are tech people and we are also artists. We are excited to see how AI will change the world and
+      we are also excited to be part of it.
+    </p>
+    <br>
+    <hr>
+
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Potential Future Exploration</strong>
+    </h4>
+    <br>
+    <ul>
+      <li>
+        Prompt-based video-generation models
+      </li>
+      <li>
+        New Controlnets
+      </li>
+      <li>
+        3d reconstruction frameworks (colmap)
+      </li>
+    </ul>
+    <br>
+    <hr>
+
+    
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Thanks</strong>
+    </h4>
+    <br>
+    <ul>
+      <li>
+        SD part largely inspired by the great project 
+        <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">stable-diffusion-webui</a>.
+      </li>
+      <li>
+        Thanks to all the researchers and model-trainers, we could complete our course project and make some contributions to our university.
+      </li>
+    </ul>
+    <br>
+    <hr>
+
+        <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>Links</strong>
+      </h4>
+              <br>
+              <ul>
+                <li>
+                  <a href="https://github.com/kianakaslana648/anly521-final-project">Github Repo</a> for this project.
+                </li>
+              </ul>
+      <hr>
+
+    <h4 style='font-family: "Times New Roman", Times, serif;'>
+      <strong>References</strong>
+    </h4>
+           <ul>
+              <li>
+                <a href="https://arxiv.org/abs/2304.01852">Summary of ChatGPT/GPT-4 Research and Perspective Towards the Future of Large Language Models
+                </a>
+              </li>
+              <li>
+                <a href="https://arxiv.org/abs/2112.10752">High-Resolution Image Synthesis with Latent Diffusion Models</a> 
+              </li>
+              <li>
+                <a href="https://arxiv.org/abs/2302.05543">Adding Conditional Control to Text-to-Image Diffusion Models</a> 
+              </li>
+            </ul>     
+   
+    
+  </div> <!-- container -->
+  <footer class="blog-footer">
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>
