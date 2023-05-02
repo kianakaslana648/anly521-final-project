@@ -40,7 +40,7 @@ As students without high-RAM GPUs, we use **Google Colab Pro** as our deploy spa
 
 (which is a local frontend)
 
-Then you are at the front webpage.
+Then you are at the front webpage. (More on the report website)
 
 ### Thanks
 * SD part largely inspired by the great project https://github.com/AUTOMATIC1111/stable-diffusion-webui. 
