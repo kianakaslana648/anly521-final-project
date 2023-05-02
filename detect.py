@@ -29,16 +29,16 @@ def depth_detect(imgs: List[PIL.Image.Image]):
 
 ### seg
 def seg_detect(imgs: List[PIL.Image.Image]):
-  mask_generator = SamAutomaticMaskGenerator(share.shared_items.detector)
-  mask_annotator = sv.MaskAnnotator()
-  seg_imgs = []
-  for image in imgs:
-    image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-    masks = mask_generator.generate(image)
-    detections = sv.Detections.from_sam(masks)
-    annotated_image = mask_annotator.annotate(image, detections)
-    seg_imgs.append(Image.fromarray(annotated_image))
-  return seg_imgs
+  # mask_generator = SamAutomaticMaskGenerator(share.shared_items.detector)
+  # mask_annotator = sv.MaskAnnotator()
+  # seg_imgs = []
+  # for image in imgs:
+  #   image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+  #   masks = mask_generator.generate(image)
+  #   detections = sv.Detections.from_sam(masks)
+  #   annotated_image = mask_annotator.annotate(image, detections)
+  #   seg_imgs.append(Image.fromarray(annotated_image))
+  return imgs
 
 ### lineart
 def lineart_detect(imgs: List[PIL.Image.Image]):

@@ -81,10 +81,11 @@ def load_annotator(controlnet: str):
   elif controlnet == 'depth':
     share.shared_items.detector = MidasDetector.from_pretrained("lllyasviel/ControlNet")
   elif controlnet == 'seg':
-    sam_checkpoint = "/content/drive/MyDrive/ANLY521/annotator/sam_vit_h_4b8939.pth"
-    model_type = "vit_h"
-    device = "cuda"
-    share.shared_items.detector = sam_model_registry[model_type](checkpoint=sam_checkpoint)
+    pass
+    # sam_checkpoint = "/content/drive/MyDrive/ANLY521/annotator/sam_vit_h_4b8939.pth"
+    # model_type = "vit_h"
+    # device = "cuda"
+    # share.shared_items.detector = sam_model_registry[model_type](checkpoint=sam_checkpoint)
   elif controlnet == 'lineart':
     share.shared_items.detector = LineartDetector.from_pretrained("lllyasviel/Annotators")
   elif controlnet == 'scribble':
