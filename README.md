@@ -1,7 +1,7 @@
 # Social Media AI-Assistance
 Team Member: Minglei Cai, Zezhen Liu, Jamie Zhang, Shihong Zhou
 
-Report Website: 
+Report Website: https://kianakaslana648.github.io/anly521-final-project/
 
 ## Project Goals
 Social media has become an important part of campus life at Georgetown University, which not only connects the school with students, faculty, and alumni but promotes campus events, programs, and initiatives. These social media accounts, ranging from offices to student organizations, often post festival information, announcements, and updates. However, managing these accounts can be challenging. The content needs to be both informative and fun while keeping up with the high volume of daily posts. Sometimes topics can often be similar, but it still requires creativity to keep the audience engaged.
