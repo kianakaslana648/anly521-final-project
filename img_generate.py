@@ -13,6 +13,12 @@ class params:
   width: int
   cfg_scale: float
   refer_image: Union[PIL.Image.Image, None]
+  def __str__(self):
+    rep = 'prompt: ' + self.prompt + '\t' + 'neg_prompt: ' + self.neg_prompt + '\t' + 'num_steps: ' + self.num_steps + '\t' + 'num_imgs: ' + self.num_imgs + '\t' + 'height: ' + self.height + '\t' + 'width: ' + self.width + '\t' + 'cfg_scale: ' + self.cfg_scale
+    return rep
+  def __repr__(self):
+    rep =  'params(' + self.prompt + ', ' + self.neg_prompt + ', ' + self.num_steps + ', ' +self.num_imgs + ', ' + self.height + ', ' + self.width + ', ' + self.cfg_scale + ')'
+    return rep
 
 def generate_img(par: params):
   if share.shared_items.controlnet == None:
