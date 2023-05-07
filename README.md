@@ -8,6 +8,9 @@ Social media has become an important part of campus life at Georgetown Universit
 
 While different kinds of deep-learning-based generative models emerge, we aim at incorporating generative models in domains of NLP (Natural Language Processing) and CV (Computer Vision) to help with content composition of social media posts.
 
+## Project Flow
+![here](./readme_pics/flow.jpg) 
+
 ## Main Parts
 ### NLP
 We use state-of-the-art text-generation model ChatGPT (GPT-3.5-turbo) as our text content generator, hashtag summarizer and stable diffusion prompt helper.
